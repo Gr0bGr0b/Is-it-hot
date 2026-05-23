@@ -1,43 +1,85 @@
-# Astro Starter Kit: Minimal
+# Is It Hot? 🌡️
 
-```sh
-yarn create astro@latest -- --template minimal
+A simple weather application built with **Astro** to check the current temperature at your location and determine if it's hot or not.
+
+## 💡 Project Idea
+
+This project demonstrates a fun, minimalist approach to building web applications with Astro. It fetches your location using IP geolocation and retrieves real-time weather data, displaying the current temperature with a humorous message about whether it's hot outside.
+
+## 🛠️ Tech Stack
+
+- **[Astro](https://astro.build)** (v6.3.7) - Modern static site builder with zero-JS by default
+- **Environment Variables** - For secure API key management
+
+## 🌍 API Integration
+
+The app uses:
+- **IPinfo API** - Determines your location from your IP address
+- **OpenWeatherMap API** - Fetches real-time weather data based on coordinates
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js >= 22.12.0
+- Yarn or npm
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone <repo-url>
+cd is-it-hot
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Install dependencies:
+```bash
+yarn install
+```
 
-## 🚀 Project Structure
+3. Create a `.env` file with your API keys:
+```env
+SECRET_IP_TOKEN=your_ipinfo_token
+SECRET_WEATHER_API=your_openweathermap_api_key
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+4. Start the development server:
+```bash
+yarn dev
+```
 
-```text
+The app will be available at `http://localhost:4321`
+
+## 📋 Available Commands
+
+| Command | Action |
+|---------|--------|
+| `yarn dev` | Start local dev server at `localhost:4321` |
+| `yarn build` | Build production site to `./dist/` |
+| `yarn preview` | Preview production build locally |
+| `yarn astro ...` | Run Astro CLI commands |
+
+## 📁 Project Structure
+
+```
 /
-├── public/
+├── public/           # Static assets
 ├── src/
 │   └── pages/
-│       └── index.astro
+│       └── index.astro    # Main weather display page
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🎯 Features
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- ✨ Displays current temperature at your location
+- 🎭 Humorous messages based on temperature
+- 🌐 Automatic location detection
+- 📱 Responsive design
+- ⚡ Fast, static-first rendering with Astro
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📚 Learn More
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `yarn install`             | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro Documentation](https://docs.astro.build)
+- [Astro Discord Community](https://astro.build/chat)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [IPinfo API](https://ipinfo.io)
