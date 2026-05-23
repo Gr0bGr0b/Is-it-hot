@@ -27,8 +27,8 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         env:
-          SECRET_WEATHER_API: ${{secrets.SECRET_WEATHER_API}}
-          SECRET_IP_TOKEN: ${{secrets.SECRET_IP_TOKEN}}
+          SECRET_WEATHER_API: ${{ secrets.SECRET_WEATHER_API }}
+          SECRET_IP_TOKEN: ${{ secrets.SECRET_IP_TOKEN }}
           
 
   deploy:
