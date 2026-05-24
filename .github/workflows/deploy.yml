@@ -30,13 +30,13 @@ jobs:
           SECRET_WEATHER_API: ${{ secrets.SECRET_WEATHER_API }}
           SECRET_IP_TOKEN: ${{ secrets.SECRET_IP_TOKEN }}
 
-      - name: Deploy to netlify 
-        id: netlify_deploy
+      - name: Deploy to Netlify
         run: |
-          prod_flag=""
-          if [ "$BRANCH_NAME" = "main" ]; then prod_flag="--prod"; fi
-          netlify deploy \
-          --dir dist \
-          --site ${{ secrets.NETLIFY_SITE_ID }} \ 
-          --auth ${{ secrets.NETLIFY_API_TOKEN }}
-          $prod_flag
+          if [ "$BRANCH_NAME" = "main" ]; then
+            netlify deploy --dir=dist --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+          else
+            netlify deploy --dir=dist --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+          fi
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
