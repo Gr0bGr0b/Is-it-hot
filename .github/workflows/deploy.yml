@@ -16,23 +16,24 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ">=22.12.0"
-          cache: "npm"
+          cache: "yarn"
 
       - name: Install Netlify
-        run: npm install -g netlify-cli
+        run: yarn add global netlify-cli
+
 
       - name: Install Dependencies
-        run: npm ci 
+        run: yarn install 
 
       - name: Build Project
-        run: npm run build 
+        run: yarn run build 
         env:
           SECRET_WEATHER_API: ${{ secrets.SECRET_WEATHER_API }}
           SECRET_IP_TOKEN: ${{ secrets.SECRET_IP_TOKEN }}
 
       - name: Deploy to Netlify
         run: |
-          if [ "$BRANCH_NAME" = "main" ]; then
+          if [ "$BRANCH_NAME" = "main" ]; then:working_dir: dir
             netlify deploy --dir=dist --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
           else
             netlify deploy --dir=dist --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
