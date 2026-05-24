@@ -33,7 +33,7 @@ jobs:
 
       - name: Deploy to Netlify
         run: |
-          if [ "$BRANCH_NAME" = "main" ]; then:working_dir: dir
+          if [ "$BRANCH_NAME" = "main" ]; then :working_dir: dir
             netlify deploy --dir=dist --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
           else
             netlify deploy --dir=dist --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
