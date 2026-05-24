@@ -15,5 +15,23 @@ jobs:
           node-version: 22.12
           cache: "yarn"
 
+      - name: Install Netlify
+        run: yarn add global netlify-cli
+
       - name: Install Dependencies
         run: yarn install 
+
+      - name: Build Project
+        run: yarn run build 
+        env:
+          SECRET_WEATHER_API: ${{ secrets.SECRET_WEATHER_API }}
+          SECRET_IP_TOKEN: ${{ secrets.SECRET_IP_TOKEN }}
+
+      - name: Deploy to netlify 
+        id: netlify_deploy
+        run: |
+          netlify_deploy \
+          --dir dist \
+          --site ${{ secrets.NETLIFY_SITE_ID }} \ 
+          --auth ${{ secrets.NETLIFY_API_TOKEN }}
+
